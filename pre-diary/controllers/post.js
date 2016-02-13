@@ -59,7 +59,18 @@ PostController.prototype.readPosts = function(req, res) {
       }
     }
     result.count = emotionCount;
-    res.status(200).send(result);
+
+    var sum =
+      (emotionCount["1"] * 1) +
+      (emotionCount["2"] * 2) +
+      (emotionCount["3"] * 3) +
+      (emotionCount["4"] * 4) +
+      (emotionCount["5"] * 5);
+    var avg = Math.ceil(sum / 5.0);
+
+    PostModel.model('User').update({_id: req.session.userId}, {$set: {emotionStatus:avg}}, function(err, result) {
+      res.status(200).send(result);
+    });
   }).catch(function(err) {
     logger.error(err);
     return res.status(400).send(err);
