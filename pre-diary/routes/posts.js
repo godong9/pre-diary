@@ -75,7 +75,7 @@ router.get('/', PostCtrl.readPosts);
  *     http://godong9.com:3001/posts
  *
  * @apiParam {Object} post post 데이터
- * @apiParam {String} post.title 제목
+ * @apiParam {String} post.subject 제목
  * @apiParam {String} post.content 내용
  * @apiParam {Date} post.openDate 공개되는 시간 (표준시 형태로 넘겨야함. ex)"2016-05-17T11:16:53.378Z")
  *
