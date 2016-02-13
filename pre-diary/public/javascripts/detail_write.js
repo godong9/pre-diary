@@ -96,6 +96,10 @@ $(document).ready(function(){
 		$('#data_submit').click(function() {
 				var url = "http://godong9.com:3001/posts";
 
+				if(!$('#subject').val() || !$('#content').val()) {
+					return alert("제목 또는 내용을 입력해주세요!");
+				}
+
 				var post = {
 						"subject": $('#subject').val(),
 						"content": $('#content').val(),
