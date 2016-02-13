@@ -48,8 +48,8 @@ PostController.prototype.updatePost = function(req, res) {
   }
   postPromise = PostModel.update({_id: req.params.id},{$set:{emotionStatus: req.body.emotionStatus}});
   //TODO: 유저 권한 체크 필요!
-  postPromise.then(function(post) {
-    res.status(200).send(post);
+  postPromise.then(function() {
+    res.status(200).send('success');
   }).catch(function(err) {
     logger.error(err);
     return res.status(400).send(err);
