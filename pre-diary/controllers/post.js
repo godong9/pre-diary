@@ -36,6 +36,13 @@ PostController.prototype.readPosts = function(req, res) {
   }
   postPromise = PostModel.find(query, {}, {sort:{openDate:-1}});
   postPromise.then(function(post) {
+
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+    res.setHeader("Access-Control-Max-Age", "3600");
+    res.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     res.status(200).send(post);
   }).catch(function(err) {
     logger.error(err);
