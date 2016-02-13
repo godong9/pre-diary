@@ -19,13 +19,10 @@ UserController.prototype.readUser = function(req, res) {
   });
 };
 
-UserController.prototype.createUser = function(req, res) {
-
-};
 
 UserController.prototype.login = function(req, res) {
   if (Session.hasSession(req)) {
-    return res.redirect('/user/'+req.session._id);
+    return res.redirect('/user/'+req.session.userId);
   }
   var request = require('request');
   request('https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&' +
@@ -47,6 +44,7 @@ UserController.prototype.login = function(req, res) {
             'Authorization': 'Bearer ' + tokenResult.access_token
           }
         };
+
         request(options, function (error, response, body) {
           try {
             result = JSON.parse(body);
