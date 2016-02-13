@@ -58,17 +58,7 @@ $(document).ready(function(){
 
 //write page
 	//date-picker
-	$('#datePicker')
-			.datepicker({
-			showOn: 'focus',
-			format: 'mm/dd/yyyy'
-	})
 
-	.on('changeDate', function(e) {
-			// Revalidate the date field
-			$('#eventForm').formValidation('revalidateField', 'date');
-	});
-	
 /*
 	$('#eventForm').formValidation({
 		framework: 'bootstrap',
