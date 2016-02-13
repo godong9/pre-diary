@@ -13,8 +13,8 @@ var PostSchema = new Schema({
   isSecret: { type: Boolean, default: true }, // 비밀 상태 여부
   openDate: { type: Date, required: true }, // 공개되는 시간
   emotionStatus: { type: Number, default: 0 }, // 감정상태 (1~5). 0은 설정 안된 상태
-  createDate: { type: Date, default: Date.now() }, // 생성 시간
-  updateDate: { type: Date, default: Date.now() } // 수정 시간
+  createDate: { type: Date, default: Date.now }, // 생성 시간
+  updateDate: { type: Date, default: Date.now } // 수정 시간
 }, { collection: 'posts' });
 
 PostSchema.index({ openDate: -1 });
