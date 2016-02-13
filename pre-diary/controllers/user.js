@@ -17,6 +17,7 @@ UserController.prototype.readUser = function(req, res) {
   var userPromise = UserModel.findOne({_id: req.params.id},'-accessToken -refreshToken');
   var postPromise = UserModel.model('Post').find({author: req.params.id});
   var result = null;
+  //TODO: 주석 풀어야함
   //if (!Session.isAllow(req, req.params.id)) {
   //  return res.status(401).send('permission denied');
   //}

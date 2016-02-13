@@ -13,6 +13,7 @@ function PostController() {
 PostController.prototype.readPost = function(req, res) {
   var postPromise = PostModel.findOne({_id: req.params.id});
   postPromise.then(function(post) {
+    //TODO: 주석 풀어야함
     //if (!Session.isAllow(req, post.author)) {
     //  return res.status(401).send('permission denied');
     //}
@@ -32,6 +33,7 @@ PostController.prototype.readPosts = function(req, res) {
   //  return res.status(401).send('permission denied');
   //}
   //query.author = req.session.userId;
+  //TODO: 삭제
   query.author = '56bf10b48ef8be4e4c3c858f';
   if (req.query.emotionStatus) {
     query.emotionStatus = req.query.emotionStatus;
@@ -75,6 +77,7 @@ PostController.prototype.createPost = function(req, res) {
   }
   req.body.author = req.session.userId;
   postPromise = PostModel.create(req.body);
+  //TODO: 주석 풀어야함!
   //if (!Session.isAllow(req, req.body.author)) {
   //  return res.status(401).send('permission denied');
   //}
