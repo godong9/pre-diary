@@ -89,7 +89,7 @@ $(document).ready(function(){
 			}
 		});*/
 
-				var select_date = $('#sel1').val();
+				var select_date = $('#sel1 option:selected').val();
 				var days = moment(new Date()).add(select_date, "days");
 				console.log(days._d);
 
