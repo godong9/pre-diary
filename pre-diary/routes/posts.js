@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('../util/sql').mysql;
-var pool = require('../util/sql').pool;
 
 /**
  * @api {get} /posts Get Post List
@@ -21,7 +19,7 @@ var pool = require('../util/sql').pool;
  *       }
  *     ]
  */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
 
 });
 
@@ -41,7 +39,7 @@ router.get('/', function(req, res, next) {
  *       }
  *     ]
  */
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function (req, res, next) {
 
 });
 
@@ -59,7 +57,7 @@ router.get('/:id', function(req, res, next) {
  *       "id": "123456abcdef"
  *     }
  */
-router.post('/', function(req, res, next) {
+router.post('/', function (req, res, next) {
 
 });
 

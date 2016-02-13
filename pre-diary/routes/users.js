@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('../util/sql').mysql;
-var pool = require('../util/sql').pool;
+var UserCtrl = require('../controllers/User');
 
-var Q = require('q');
+/**
+ * Login API
+ */
+router.get('/login/callback', UserCtrl.login);
 
-var CLIENT_ID = 'ramRPsEprwFt2FOzrHzg';
-var CLIENT_SECRET = '5KYRbJV1Tw';
 
 /**
  * @api {get} /users/:id Get User Info
@@ -22,48 +22,7 @@ var CLIENT_SECRET = '5KYRbJV1Tw';
  *       "id": "123456abcdef"
  *     }
  */
-router.get('/:id', function(req, res, next) {
-  pool.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-    if (err) throw err;
-
-    console.log('The solution is: ', rows[0].solution);
-    res.send('respond with a resource');
-  });
-});
-
-router.get('/login/callback', function(req, res, next) {
-  var request = require('request');
-  request('https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&'+
-      'client_id='+CLIENT_ID+
-      '&client_secret='+CLIENT_SECRET+
-      '&code='+req.query.code+'&state='+req.query.state,
-      function (error, response, body) {
-          var result, options;
-          if (!error && response.statusCode == 200) {
-              try {
-                  result = JSON.parse(body);
-              } catch(e) {
-                  return res.send(e);
-              }
-              options = {
-                  url: 'https://openapi.naver.com/v1/nid/me',
-                  headers: {
-                      'Authorization': 'Bearer ' + result.access_token
-                  }
-              };
-              request(options, function (error, response, body) {
-                  try {
-                      result = JSON.parse(body);
-                  } catch(e) {
-                      return res.send(e);
-                  }
-
-                  //TODO: 유저 회원 가입 추가
-                  res.send(result.response);
-              });
-          }
-      });
-});
+router.get('/:id', UserCtrl.readUser);
 
 /**
  * @api {post} /users Add New User
@@ -81,9 +40,7 @@ router.get('/login/callback', function(req, res, next) {
  *       "id": "123456abcdef"
  *     }
  */
-router.post('/', function(req, res, next) {
-
-});
+router.post('/', UserCtrl.createUser);
 
 
 module.exports = router;

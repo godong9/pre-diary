@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var mongoose = require('mongoose');
+var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -12,7 +14,9 @@ var posts = require('./routes/posts');
 
 var app = express();
 
+var DB_URI = 'mongodb://localhost/prediary';
 var MongoStore = null;
+var modelsPath = null;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +31,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/doc', express.static(path.join(__dirname, 'doc')));
 
+// Model files
+modelsPath = path.join(__dirname, './models');
+
+fs.readdirSync(modelsPath).forEach(function (file) {
+  if (/(.*)\.(js$|coffee$)/.test(file)) {
+    require(modelsPath + '/' + file);
+  }
+});
+
+// Database Setup
+mongoose.connect(DB_URI, {});
+
+// Route files
 app.use('/', routes);
 app.use('/users', users);
 app.use('/posts', posts);
@@ -67,7 +84,7 @@ if (app.get('env') === 'production') {
   MongoStore = require('connect-mongo')(session);
   app.use(session({
     secret: 'prediary',
-    store: new MongoStore({ url: 'mongodb://localhost/prediary' }),
+    store: new MongoStore({ url: DB_URI }),
     resave: false,
     saveUninitialized: true
   }));
