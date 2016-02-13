@@ -28,17 +28,18 @@ UserController.prototype.login = function(req, res) {
     '&client_secret=' + CLIENT_SECRET +
     '&code=' + req.query.code + '&state=' + req.query.state,
     function (error, response, body) {
-      var result, options, newUser;
+      var tokenResult, result, options, newUser;
       if (!error && response.statusCode == 200) {
         try {
-          result = JSON.parse(body);
+          tokenResult = JSON.parse(body);
         } catch (e) {
           return res.send(e);
         }
+
         options = {
           url: 'https://openapi.naver.com/v1/nid/me',
           headers: {
-            'Authorization': 'Bearer ' + result.access_token
+            'Authorization': 'Bearer ' + tokenResult.access_token
           }
         };
         request(options, function (error, response, body) {
@@ -48,13 +49,12 @@ UserController.prototype.login = function(req, res) {
             return res.send(e);
           }
 
-          //TODO: 유저 회원 가입 추가
           newUser = {
             nickname: result.response.nickname,
             email: result.response.email,
             birthday: result.response.birthday,
-            accessToken: result.response.accessToken,
-            refreshToken: result.response.refreshToken
+            accessToken: tokenResult.access_token,
+            refreshToken: tokenResult.refresh_token
           };
 
           UserModel.create(newUser, function(err, user) {
