@@ -21,7 +21,7 @@
 #back-icon{
     width: 24px;
     height: 24px;
-    background:url(./img/back-icon.png) no-repeat center center;
+    background:url('/images/back-icon.png') no-repeat center center;
 }
 
 
@@ -120,7 +120,7 @@
 }
 
 #lock-icon{
-  background:url(./img/lock.png) no-repeat center center;
+  background:url('/images/lock.png') no-repeat center center;
   background-size : 30px 30px;
   width: 30px;
   height: 30px;
