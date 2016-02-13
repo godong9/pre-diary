@@ -20,18 +20,24 @@ router.get('/user/:id', function(req, res, next) {
     return res.status(404).send('permission denied');
   }
   var viewData = {
-    userId: req.session.userId
+    userId: req.session.userId,
+    userNickname: req.session.userNickname
   };
 
-  UserModel.findOne({_id: viewData.userId},'-accessToken -refreshToken', function(err, user) {
-    viewData.user = user;
-    res.render('user', viewData);
-  });
+  res.render('user', viewData);
 });
 
 /* GET User Emotion Page. */
 router.get('/user/emotion/:id', function(req, res, next) {
-  res.render('userEmotion');
+  if (!Session.hasSession(req)) {
+    return res.status(404).send('permission denied');
+  }
+  var viewData = {
+    userId: req.session.userId,
+    userNickname: req.session.userNickname
+  };
+
+  res.render('userEmotion', viewData);
 });
 
 /* GET Post Page. */
@@ -40,7 +46,8 @@ router.get('/post/:id', function(req, res, next) {
     return res.status(404).send('permission denied');
   }
   var viewData = {
-    userId: req.session.userId
+    userId: req.session.userId,
+    userNickname: req.session.userNickname
   };
 
   res.render('post', viewData);
