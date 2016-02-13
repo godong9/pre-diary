@@ -72,15 +72,8 @@ router.post('/', PostCtrl.createPost);
  * @apiParam {Object} post post 데이터
  * @apiParam {Number} post.emotionStatus 감정상태(1:bad ~ 5:good)
  *
- * @apiSuccess {Object} post post 데이터
- * @apiSuccess {String} post._id post id
- *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *     {
- *       "_id": "56bf1c7f8f2f3ab94ec59e51"
- *       ...
- *     }
  */
 router.put('/:id', PostCtrl.updatePost);
 
