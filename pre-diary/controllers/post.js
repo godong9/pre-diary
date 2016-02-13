@@ -72,10 +72,12 @@ PostController.prototype.readPosts = function(req, res) {
 
 PostController.prototype.createPost = function(req, res) {
   var postPromise;
-  if (!Session.hasSession(req)) {
-    return res.status(401).send('permission denied');
-  }
-  req.body.author = req.session.userId;
+  //TODO: 주석 풀어야함!
+  //if (!Session.hasSession(req)) {
+  //  return res.status(401).send('permission denied');
+  //}
+  //req.body.author = req.session.userId;
+  req.body.author = '56bf10b48ef8be4e4c3c858f';
   postPromise = PostModel.create(req.body);
   //TODO: 주석 풀어야함!
   //if (!Session.isAllow(req, req.body.author)) {
