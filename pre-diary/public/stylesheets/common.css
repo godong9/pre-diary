@@ -1,0 +1,11 @@
+html, body {
+
+  margin:0;
+  padding:0;
+  overflow-x : hidden;
+}
+
+body{
+   background:url(./img/background@2x.png) no-repeat center center;
+   background-size : 360px 740px;
+}

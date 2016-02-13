@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pre-Diary</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+
+    <script src="/javascripts/moment.js"></script>
+    <script src="/javascripts/index.js"></script>
+</head>
+
+<body>
+<header id="index-header">
+    <div id="index-header-content" class="row">
+        <div class="col-xs-4">
+            <div id="emotion"></div>
+        </div>
+        <div class="col-xs-8">
+            <div id="index-title">ooo 의 <a id="month"></a>월</div>
+            <div id="show-emtion">
+                    <span>
+                      전체 감정 일기 보기
+                    </span>
+                    <span id ="go-icon">
+
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div id="seletor" >
+        <div class="btn-group" role="group" >
+            <button id="show" type="button" class="btn">공개</button>
+            <button id="notshow" type="button" class="btn">비공개</button>
+        </div>
+        <!--  <div class="col-xs-offset-7 col-xs-3" id = "filter">
+          전체 공개
+        </div>
+        <div id="filter-icon" class="col-xs-1">
+
+        </div> -->
+        <!-- <div class="col-xs-2 col-xs-offset-8">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                    <span data-bind="label">Select One</span>&nbsp;<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">전체</a></li>
+                    <li><a href="#">공개</a></li>
+                    <li><a href="#">비공개</a></li>
+                </ul>
+            </div>
+        </div> -->
+
+    </div>
+</header>
+<main>
+    <div id="content">
+        <section>
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-10 text-group">
+                                    <div class="list-font-item1">First item</div>
+                                    <div class="list-font-item2">11/11/11</div>
+                                </div>
+                                <div class="emotion-icon col-xs-2"></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-10 text-group">
+                                    <div class="list-font-item1">First item</div>
+                                    <div class="list-font-item2">11/11/11</div>
+                                </div>
+                                <div class="emotion-icon col-xs-2"></div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div>
+        </section>
+    </div>
+</main>
+<footer>
+    <button id="write" type="button" class="btn btn-block">일기쓰기</button>
+</footer>
+</body>
+
+</html>

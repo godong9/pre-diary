@@ -1,0 +1,137 @@
+/* nav */
+#static-nav{
+    height: 50px;
+    width:100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    position:fixed;
+    padding: 10px 20px;
+
+
+}
+
+#title{
+    height: 50px;
+    font-size: 20px;
+    font-family: SpoqaHanSans-Regular;
+    letter-spacing: -0.7px;
+    color: #ffffff;
+    text-align:center;
+}
+
+#back-icon{
+    width: 24px;
+    height: 24px;
+    background:url(./img/back-icon.png) no-repeat center center;
+}
+
+
+/* header */
+#static-header{
+    height : 200px;
+    position :fixed;
+    margin-top : 50px;
+}
+
+
+
+.emotion1{
+
+    height : 48px;
+    width : 48px;
+}
+.emotion-count{
+    text-align:right;
+    width: 100%;
+    height: 17px;
+    font-size: 14px;
+    font-family: SpoqaHanSans-Regular;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.emotion-box{
+    width:100%;
+    padding : 10px;
+
+}
+.emtion-group{
+
+    margin : 3px;
+    margin-top:80px;
+    font:#ffffff;
+}
+
+
+/* Content*/
+
+#satatic-content{
+    margin-top : 250px;
+    height:420px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+
+    text-align:center;
+    vertical-align:middle;
+}
+
+.list-group{
+
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: left;
+
+}
+.list-group-item{
+   padding:5px 10px;
+   margin: 3px 5px;
+   border : 0px solid #ffffff;
+   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.text-group{
+    margin-top:6px;
+}
+
+.list-font-item1{
+    width: 289px;
+    height: 17px;
+    font-size: 14px;
+    font-family: SpoqaHanSans-Regular;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.list-font-item2{
+    width: 289px;
+    height: 17px;
+    opacity: 0.6;
+    font-size: 14px;
+    font-family: SpoqaHanSans-Regular;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.emotion-icon{
+
+    width: 48px;
+    height: 48px;
+    /* background:url(./img/pre_face_01.png) no-repeat center center;
+    background-size : 48px 48px; */
+}
+
+#lock-icon{
+  background:url(./img/lock.png) no-repeat center center;
+  background-size : 30px 30px;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+}
+
+#lock-date{
+  color: #ffffff;
+  display: inline-block;
+  font-size : 17px;
+  margin-left:10px;
+  height:30px;
+
+}
