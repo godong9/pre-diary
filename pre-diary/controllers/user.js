@@ -60,13 +60,19 @@ UserController.prototype.login = function(req, res) {
             refreshToken: tokenResult.refresh_token
           };
 
-          UserModel.create(newUser, function(err, user) {
-            if (err) {
-              res.status(400).send(err);
-              return;
+          UserModel.findOne({nickname: newUser.nickname}, function(err, user) {
+            if (user) {
+              Session.registerSession(req, user);
+              return res.redirect('/user/'+req.session.userId);
             }
-            Session.registerSession(req, user);
-            res.status(200).send(user);
+            UserModel.create(newUser, function(err, user) {
+              if (err) {
+                res.status(400).send(err);
+                return;
+              }
+              Session.registerSession(req, user);
+              res.redirect('/user/'+req.session.userId);
+            });
           });
         });
       }
