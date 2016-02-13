@@ -6,6 +6,6 @@ html, body {
 }
 
 body{
-   background:url(./img/background@2x.png) no-repeat center center;
+   background:url('/images/background@2x.png') no-repeat center center;
    background-size : 360px 740px;
 }
