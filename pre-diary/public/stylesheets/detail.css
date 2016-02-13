@@ -2,69 +2,71 @@ section#detail header.nav {
   margin: 0px;
   height: 50px;
   background-color: rgba(255, 255, 255, 0.3); }
-  section#detail header.nav .left-wrapper {
-    float: left; }
-    section#detail header.nav .left-wrapper img {
-      vertical-align: middle;
-      width: 24px;
-      margin: 13px; }
-  section#detail header.nav .right-wrapper {
-    float: right; }
-    section#detail header.nav .right-wrapper > img {
-      width: 24px;
-      cursor: pointer;
-      margin: 13px; }
-    section#detail header.nav .right-wrapper .modal-body {
-      text-align: center; }
-    section#detail header.nav .right-wrapper .modal-body > img {
-      text-align: center;
-      width: 230px;
-      cursor: pointer; }
+section#detail header.nav .left-wrapper {
+  float: left; }
+section#detail header.nav .left-wrapper img {
+  vertical-align: middle;
+  width: 24px;
+  margin: 13px; }
+section#detail header.nav .right-wrapper {
+  float: right; }
+section#detail header.nav .right-wrapper > img {
+  width: 24px;
+  cursor: pointer;
+  margin: 13px; }
+section#detail header.nav .right-wrapper .modal-body {
+  text-align: center; }
+section#detail header.nav .right-wrapper .modal-body > img {
+  text-align: center;
+  width: 230px;
+  cursor: pointer; }
 section#detail article.detail-content-wrapper .detail-content {
   margin: 8px;
   background-color: rgba(0, 0, 0, 0.3);
   color: white; }
+section#detail article.detail-content-wrapper .detail-content p {
+  margin: 10px; }
 section#detail footer {
   background-color: #e5722e;
   position: absolute;
   bottom: 0px;
   width: 100%; }
-  section#detail footer .arrow-wrapper {
-    padding: 5px 0px;
-    margin: 5px 0px;
-    background-color: white; }
-    section#detail footer .arrow-wrapper img {
-      width: 18px; }
-    section#detail footer .arrow-wrapper p {
-      margin: 0px;
-      color: #e5722e;
-      font-size: 14px; }
-    section#detail footer .arrow-wrapper .col-xs-2 {
-      padding: 0px 5px; }
-  section#detail footer .left img, section#detail footer .right img, section#detail footer .center img {
-    width: 18px;
-    cursor: pointer; }
-  section#detail footer .left {
-    text-align: left; }
-  section#detail footer .center {
-    text-align: center; }
-  section#detail footer .right {
-    text-align: right; }
-  section#detail footer .center-content {
-    text-align: center; }
-    section#detail footer .center-content .smile {
-      display: inline-block;
-      width: 40px;
-      border-radius: 50%;
-      margin: 0px 5px; }
-      section#detail footer .center-content .smile img {
-        color: yellow;
-        width: 30px;
-        border-radius: 50%; }
-  section#detail footer .bottom p {
-    display: inline-block;
-    font-size: 11px;
-    color: white;
-    margin: 5px 3px 5px 8px; }
+section#detail footer .arrow-wrapper {
+  padding: 5px 0px;
+  margin: 5px 0px;
+  background-color: white; }
+section#detail footer .arrow-wrapper img {
+  width: 18px; }
+section#detail footer .arrow-wrapper p {
+  margin: 0px;
+  color: #e5722e;
+  font-size: 14px; }
+section#detail footer .arrow-wrapper .col-xs-2 {
+  padding: 0px 5px; }
+section#detail footer .left img, section#detail footer .right img, section#detail footer .center img {
+  width: 18px;
+  cursor: pointer; }
+section#detail footer .left {
+  text-align: left; }
+section#detail footer .center {
+  text-align: center; }
+section#detail footer .right {
+  text-align: right; }
+section#detail footer .center-content {
+  text-align: center; }
+section#detail footer .center-content .smile {
+  display: inline-block;
+  width: 40px;
+  border-radius: 50%;
+  margin: 0px 5px; }
+section#detail footer .center-content .smile img {
+  color: yellow;
+  width: 30px;
+  border-radius: 50%; }
+section#detail footer .bottom p {
+  display: inline-block;
+  font-size: 11px;
+  color: white;
+  margin: 5px 3px 5px 8px; }
 
 /*# sourceMappingURL=detail.css.map */
