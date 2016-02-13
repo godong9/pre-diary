@@ -14,9 +14,9 @@ UserController.prototype.readUser = function(req, res) {
   var userPromise = UserModel.findOne({_id: req.params.id});
   var postPromise = UserModel.model('Post').find({author: req.params.id});
   var result = null;
-  if (!Session.isAllow(req, req.params.id)) {
-    return res.status(401).send('permission denied');
-  }
+  //if (!Session.isAllow(req, req.params.id)) {
+  //  return res.status(401).send('permission denied');
+  //}
   userPromise.then(function(user) {
     if (!user) {
       throw 'not exist user';
