@@ -34,7 +34,6 @@ $(document).ready(function(){
 			 //		alert('sucess but');
 			 },
 			 error : function(xhr, status, error) {
-			     alert("에러발생");
 			 }
 	 });
 			
@@ -42,7 +41,6 @@ $(document).ready(function(){
 						
 					var score = $(this).find('img').val();
 				
-					alert(score);
 
 					var url = 'http://godong9.com:3001/posts/56bf1c7f8f2f3ab94ec59e51';
 
@@ -112,7 +110,7 @@ $(document).ready(function(){
 				var post = {
 						"subject": $('#subject').val(),
 						"content": $('#content').val(),
-						"openDate": days._d
+						"openDate": 1234
 				};
 
 				$.post(url,post,function(data) {
