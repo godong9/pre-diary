@@ -4,8 +4,6 @@ var express = require('express');
 var router = express.Router();
 var Session = require('../util/session');
 
-var UserModel = require('../models/user');
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (Session.hasSession(req)) {
@@ -54,7 +52,7 @@ router.get('/post/:id', function(req, res, next) {
 });
 
 /* GET Write Post Page. */
-router.get('/post/write', function(req, res, next) {
+router.get('/user/post/write/', function(req, res, next) {
   res.render('writePost');
 });
 
