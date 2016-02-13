@@ -24,6 +24,28 @@ var PostCtrl = require('../controllers/post');
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
+ *     {
+ *       "id": "56bf1c7f8f2f3ab94ec59e51",
+ *       ...
+ *     }
+ */
+router.get('/:id', PostCtrl.readPost);
+
+/**
+ * @api {get} /posts Get Post List
+ * @apiName GetPostList
+ * @apiGroup Post
+ * @apiDescription 포스트 데이터 리스트 가져오는 API
+ *
+ * @apiExample {curl} Example usage:
+ *     curl -i http://godong9.com:3001/posts?emotionStatus=4
+ *
+ * @apiParam {Number} [emotionStatus] 가져올 감정 상태 (1~5)
+ *
+ * @apiSuccess {Object[]} post post 데이터 리스트
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
  *     [
  *       {
  *         "id": "56bf1c7f8f2f3ab94ec59e51",
@@ -31,7 +53,7 @@ var PostCtrl = require('../controllers/post');
  *       }
  *     ]
  */
-router.get('/:id', PostCtrl.readPost);
+router.get('/', PostCtrl.readPosts);
 
 /**
  * @api {post} /posts Add New Post

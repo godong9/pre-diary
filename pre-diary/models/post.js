@@ -17,6 +17,9 @@ var PostSchema = new Schema({
   updateDate: { type: Date, default: Date.now() } // 수정 시간
 }, { collection: 'posts' });
 
+PostSchema.index({ openDate: -1 });
+PostSchema.index({ updateDate: -1 });
+
 /**
  * Model Methods
  */

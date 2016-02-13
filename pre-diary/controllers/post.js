@@ -23,6 +23,25 @@ PostController.prototype.readPost = function(req, res) {
   });
 };
 
+PostController.prototype.readPosts = function(req, res) {
+  var query = {};
+  var postPromise;
+  if (!Session.hasSession(req)) {
+    return res.status(401).send('permission denied');
+  }
+  query.author = req.session.userId;
+  if (req.query.emotionStatus) {
+    query.emotionStatus = req.query.emotionStatus;
+  }
+  postPromise = PostModel.find(query, {}, {sort:{openDate:-1}});
+  postPromise.then(function(post) {
+    res.status(200).send(post);
+  }).catch(function(err) {
+    logger.error(err);
+    return res.status(400).send(err);
+  });
+};
+
 PostController.prototype.createPost = function(req, res) {
   var postPromise;
   if (!Session.hasSession(req)) {
