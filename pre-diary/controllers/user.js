@@ -50,15 +50,19 @@ UserController.prototype.login = function(req, res) {
 
           //TODO: 유저 회원 가입 추가
           newUser = {
-            nickname: result.nickname,
-            email: result.email,
-            birthday: result.birthday,
-            accessToken: result.accessToken,
-            refreshToken: result.refreshToken
+            nickname: result.response.nickname,
+            email: result.response.email,
+            birthday: result.response.birthday,
+            accessToken: result.response.accessToken,
+            refreshToken: result.response.refreshToken
           };
 
           UserModel.create(newUser, function(err, user) {
-            res.send("SUCCESS");
+            if (err) {
+              res.send(err);
+              return;
+            }
+            res.send(user);
           });
         });
       }
