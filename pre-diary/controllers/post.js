@@ -40,12 +40,26 @@ PostController.prototype.readPosts = function(req, res) {
     {$match: query},
     {$group:{_id:"$emotionStatus",total:{$sum:1}}},
     {$sort:{_id:1}}
-  ]);
+  ]).exec();
+
   postPromise.then(function(posts) {
     result.posts = posts || [];
     return postCountPromise;
   }).then(function(postCount) {
-    result.count = postCount;
+    var emotionCount = {
+      "1": "0",
+      "2": "0",
+      "3": "0",
+      "4": "0",
+      "5": "0"
+    };
+    var i, len;
+    for (i=0, len=postCount.length; i<len; i++) {
+      if (postCount[i] && postCount[i]._id) {
+        emotionCount[postCount[i]._id] = postCount[i].total;
+      }
+    }
+    result.count = emotionCount;
     res.status(200).send(result);
   }).catch(function(err) {
     logger.error(err);
