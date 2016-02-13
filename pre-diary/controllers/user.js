@@ -14,7 +14,7 @@ UserController.prototype.readUser = function(req, res) {
     if (err) {
       return res.status(400).send(err);
     }
-    res.status(200).send(user);
+    res.status(200).send(user || {});
   });
 };
 
