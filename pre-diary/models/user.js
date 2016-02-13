@@ -18,7 +18,7 @@ var UserSchema = new Schema({
   updateDate: { type: Date, default: Date.now() } // 수정 시간
 }, { collection: 'users' });
 
-UserSchema.index({ name: 1 }, { unique: true });
+UserSchema.index({ nickname: 1 }, { unique: true });
 
 /**
  * Model Methods
