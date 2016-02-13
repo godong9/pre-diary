@@ -279,7 +279,7 @@ $(function() {
           }
           $(".list-group").append(tempList);
 
-          listItem.unbind('click').click(function(){
+          $(".list-group-item").unbind('click').bind('click', function(){
             var value = $(this).value();
             var url = "/post/"+value;
             $(location).attr('href',url);

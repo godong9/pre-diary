@@ -72,6 +72,12 @@ $(function() {
           $(".list-group").append(tempList);
 
           emotionCount.eq(i).text(data.count[i+1]);
+
+          $(".list-group-item").unbind('click').bind('click', function(){
+            var value = $(this).value();
+            var url = "/post/"+value;
+            $(location).attr('href',url);
+          });
         }
       });
     }
