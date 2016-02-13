@@ -104,7 +104,7 @@ $(document).ready(function(){
 				console.log(days._d);
 
 		$('#data_submit').click(function() {
-	
+				console.log("CLICK");
 				var url = "http://godong9.com:3001/posts";
 
 				var post = {
