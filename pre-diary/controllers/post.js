@@ -13,10 +13,9 @@ function PostController() {
 PostController.prototype.readPost = function(req, res) {
   var postPromise = PostModel.findOne({_id: req.params.id});
   postPromise.then(function(post) {
-    //TODO: 주석 풀어야함
-    //if (!Session.isAllow(req, post.author)) {
-    //  return res.status(401).send('permission denied');
-    //}
+    if (!Session.isAllow(req, post.author)) {
+      return res.status(401).send('permission denied');
+    }
     res.status(200).send(post);
   }).catch(function(err) {
     logger.error(err);
@@ -28,13 +27,10 @@ PostController.prototype.readPosts = function(req, res) {
   var query = {};
   var result = {};
   var postPromise, postCountPromise;
-  //TODO: 주석 풀어야함!
-  //if (!Session.hasSession(req)) {
-  //  return res.status(401).send('permission denied');
-  //}
-  //query.author = req.session.userId;
-  //TODO: 삭제
-  query.author = '56bf10b48ef8be4e4c3c858f';
+  if (!Session.hasSession(req)) {
+    return res.status(401).send('permission denied');
+  }
+  query.author = req.session.userId;
   if (req.query.emotionStatus) {
     query.emotionStatus = req.query.emotionStatus;
   }
@@ -72,17 +68,14 @@ PostController.prototype.readPosts = function(req, res) {
 
 PostController.prototype.createPost = function(req, res) {
   var postPromise;
-  //TODO: 주석 풀어야함!
-  //if (!Session.hasSession(req)) {
-  //  return res.status(401).send('permission denied');
-  //}
-  //req.body.author = req.session.userId;
-  req.body.author = '56bf10b48ef8be4e4c3c858f';
+  if (!Session.hasSession(req)) {
+    return res.status(401).send('permission denied');
+  }
+  req.body.author = req.session.userId;
   postPromise = PostModel.create(req.body);
-  //TODO: 주석 풀어야함!
-  //if (!Session.isAllow(req, req.body.author)) {
-  //  return res.status(401).send('permission denied');
-  //}
+  if (!Session.isAllow(req, req.body.author)) {
+    return res.status(401).send('permission denied');
+  }
   postPromise.then(function(post) {
     res.status(200).send(post);
   }).catch(function(err) {

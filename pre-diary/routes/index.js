@@ -16,10 +16,9 @@ router.get('/', function(req, res, next) {
 
 /* GET User Page. */
 router.get('/user/:id', function(req, res, next) {
-  //TODO: 주석 풀어야함!
-  //if (!Session.hasSession(req)) {
-  //  return res.status(404).send('permission denied');
-  //}
+  if (!Session.hasSession(req)) {
+    return res.status(404).send('permission denied');
+  }
   var viewData = {
     userId: req.session.userId
   };
@@ -37,10 +36,9 @@ router.get('/user/emotion/:id', function(req, res, next) {
 
 /* GET Post Page. */
 router.get('/post/:id', function(req, res, next) {
-  //TODO: 주석 풀어야함!
-  //if (!Session.hasSession(req)) {
-  //  return res.status(404).send('permission denied');
-  //}
+  if (!Session.hasSession(req)) {
+    return res.status(404).send('permission denied');
+  }
   var viewData = {
     userId: req.session.userId
   };
