@@ -26,6 +26,10 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+router.get('/login/callback', function(req, res, next) {
+  res.send(req.query);
+});
+
 /**
  * @api {post} /users Add New User
  * @apiName PostUser
