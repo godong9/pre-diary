@@ -226,10 +226,9 @@ $(function() {
     });
 
      header.click(function(){
-         var url = "/statics"
+         var url = "/user/emotion/"+$('#user_main').data('user');
          $(location).attr('href',url);
      });
-
 
      /*
      listview

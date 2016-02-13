@@ -14,7 +14,10 @@ router.get('/', function(req, res, next) {
 
 /* GET User Page. */
 router.get('/user/:id', function(req, res, next) {
-  res.render('user');
+  var viewData = {
+    userId: req.session.userId
+  };
+  res.render('user', viewData);
 });
 
 /* GET User Emotion Page. */
