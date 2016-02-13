@@ -42,16 +42,26 @@ router.get('/:id', PostCtrl.readPost);
  *
  * @apiParam {Number} [emotionStatus] 가져올 감정 상태 (1~5)
  *
- * @apiSuccess {Object[]} post post 데이터 리스트
+ * @apiSuccess {Object[]} posts post 데이터 리스트
+ * @apiSuccess {Object} count post 카운트
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *     [
- *       {
- *         "id": "56bf1c7f8f2f3ab94ec59e51",
- *         ...
- *       }
- *     ]
+ *     {
+   *     posts:[
+   *       {
+   *         "id": "56bf1c7f8f2f3ab94ec59e51",
+   *         ...
+   *       }
+   *     ],
+   *     count:{
+   *       "1": "10",
+   *       "2": "5",
+   *       "3": "3",
+   *       "4": "7",
+   *       "5": "2"
+   *     }
+ *     }
  */
 router.get('/', PostCtrl.readPosts);
 

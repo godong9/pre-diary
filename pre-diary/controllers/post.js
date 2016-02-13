@@ -25,7 +25,8 @@ PostController.prototype.readPost = function(req, res) {
 
 PostController.prototype.readPosts = function(req, res) {
   var query = {};
-  var postPromise;
+  var result = {};
+  var postPromise, postCountPromise;
   //TODO: 주석 풀어야함!
   //if (!Session.hasSession(req)) {
   //  return res.status(401).send('permission denied');
@@ -35,8 +36,17 @@ PostController.prototype.readPosts = function(req, res) {
     query.emotionStatus = req.query.emotionStatus;
   }
   postPromise = PostModel.find(query, {}, {sort:{openDate:-1}});
-  postPromise.then(function(post) {
-    res.status(200).send(post);
+  postCountPromise = PostModel.aggregate([
+    {$match: query},
+    {$group:{_id:"$emotionStatus",total:{$sum:1}}},
+    {$sort:{_id:1}}
+  ]);
+  postPromise.then(function(posts) {
+    result.posts = posts || [];
+    return postCountPromise;
+  }).then(function(postCount) {
+    result.count = postCount;
+    res.status(200).send(result);
   }).catch(function(err) {
     logger.error(err);
     return res.status(400).send(err);
