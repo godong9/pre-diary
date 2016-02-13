@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var Session = require('../util/session');
+var UserModel = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -22,7 +23,10 @@ router.get('/user/:id', function(req, res, next) {
     userNickname: req.session.userNickname
   };
 
-  res.render('user', viewData);
+  UserModel.findOne({_id: viewData.userId},'-accessToken -refreshToken', function(err, user) {
+    viewData.user = user;
+    res.render('user', viewData);
+  });
 });
 
 /* GET User Emotion Page. */
