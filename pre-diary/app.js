@@ -45,6 +45,23 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 // Database Setup
 mongoose.connect(DB_URI, {});
 
+// Session
+if (app.get('env') === 'production') {
+  MongoStore = require('connect-mongo/es5')(session);
+  app.use(session({
+    secret: 'prediary',
+    store: new MongoStore({ url: DB_URI }),
+    resave: false,
+    saveUninitialized: true
+  }));
+} else {
+  app.use(session({
+    secret: 'prediary',
+    resave: false,
+    saveUninitialized: true
+  }));
+}
+
 // Route files
 app.use('/', routes);
 app.use('/users', users);
@@ -80,22 +97,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-// Session
-if (app.get('env') === 'production') {
-  MongoStore = require('connect-mongo/es5')(session);
-  app.use(session({
-    secret: 'prediary',
-    store: new MongoStore({ url: DB_URI }),
-    resave: false,
-    saveUninitialized: true
-  }));
-} else {
-  app.use(session({
-    secret: 'prediary',
-    resave: false,
-    saveUninitialized: true
-  }));
-}
 
 module.exports = app;
