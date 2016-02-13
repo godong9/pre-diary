@@ -103,7 +103,8 @@ $(document).ready(function(){
 				};
 
 				$.post(url,post,function(data) {
-
+					var url = '/user/'+$('#user_main').data('user');
+					$(location).attr('href',url);
 				});
 		});
 
