@@ -13,6 +13,15 @@ var UserCtrl = require('../controllers/user');
 router.get('/login', UserCtrl.login);
 
 /**
+ * @api {get} /users/logout Logout
+ * @apiName Logout
+ * @apiGroup User
+ * @apiDescription 로그아웃하는 API
+ */
+router.get('/logout', UserCtrl.logout);
+
+
+/**
  * Login Callback
  */
 router.get('/login/callback', UserCtrl.loginCallback);

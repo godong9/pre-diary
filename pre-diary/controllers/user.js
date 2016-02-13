@@ -43,6 +43,11 @@ UserController.prototype.login = function(req, res) {
   )
 };
 
+UserController.prototype.logout = function(req, res) {
+  Session.removeSession(req);
+  res.redirect('/');
+};
+
 UserController.prototype.loginCallback = function(req, res) {
   if (Session.hasSession(req)) {
     return res.redirect('/user/'+req.session.userId);

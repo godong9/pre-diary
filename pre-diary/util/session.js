@@ -22,5 +22,3 @@ Session.prototype.isAllow = function (req, userId) {
 };
 
 module.exports = new Session();
-
-
