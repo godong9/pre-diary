@@ -31,168 +31,219 @@ $(function() {
     ajaxCall();
 
 
-    $(window).scroll(function(event) {
 
-        //Sets the current scroll position
-        var st = $(this).scrollTop();
+  $(window).scroll(function(event) {
 
-
-        var headerHeight = header.height();
+    //Sets the current scroll position
+    var st = $(this).scrollTop();
 
 
-        //Determines up-or-down scrolling
-        if (st > lastScroll) {
+    var headerHeight = header.height();
 
 
-            header.animate({
-
-                height: "50px"
-            }, 200, function() {
-                header.css("position", "fixed");
-                header.css("top", "0px");
-
-            });
-
-            content.animate({
+    //Determines up-or-down scrolling
+    if (st > lastScroll) {
 
 
-            }, 100, function() {
-                content.css("margin-top", "50px");
-                content.css("height", "500px");
-                content.css("overflow-y", "auto");
-                content.scrollTop(1);
-            });
+      header.animate({
 
-            tempValue = 1;
+        height: "50px"
+      }, 10, function() {
+        header.css("position", "fixed");
+        header.css("top", "0px");
 
-            emotion.animate({
+      });
 
-                height: "30px",
-                width: "30px"
-            }, 100, function() {
-                showEmtion.css("visibility", "hidden");
-                seletor.css("visibility", "hidden");
-                indexTitle.css("font-size", "20px");
-                indexTitle.css("height", "24px");
-                indexTitle.css("letter-spacing", "-0.7px");
-                indexTitle.css("font-size", "20px");
-
-                headerContent.css("margin", "4px 2px");
-                emotion.css("margin","8px 0px");
-                emotion.css("background-size","40px 40px");
-
-            });
+      content.animate({
 
 
-        } else {
-            /* header.animate({
+      }, 10, function() {
+        content.css("margin-top", "50px");
+        content.css("height", "500px");
+        content.css("overflow-y", "auto");
+        content.scrollTop(1);
+      });
 
-                 height: "350px"
-             }, 200, function() {
-                 header.css("position","relative");
-                 header.css("top","0px");
-             });
+      tempValue = 1;
 
-             content.animate({
+      emotion.animate({
 
-                 // margin-top : "350px"
-             }, 100, function() {
-                 content.css("margin-top","0px");
-                 content.css("height","500px");
-                 content.css("overflow-y","visible");
-                 content.scrollTop(0);
-             });*/
-        }
-        //Updates scroll position
-        lastScroll = st;
-    });
+        height: "30px",
+        width: "30px"
+      }, 10, function() {
+        showEmtion.css("visibility", "hidden");
+        seletor.css("visibility", "hidden");
+        indexTitle.css("font-size", "20px");
+        indexTitle.css("height", "24px");
+        indexTitle.css("letter-spacing", "-0.7px");
+        indexTitle.css("font-size", "20px");
 
+        headerContent.css("margin", "4px 2px");
+        emotion.css("margin","8px 0px");
+        emotion.css("background-size","40px 40px");
 
-
-
-    content.scroll(function(event) {
-        var st = $(this).scrollTop();
-
-        if (st == 0) {
+      });
 
 
-            header.animate({
+    } else {
+      /* header.animate({
 
-                height: "185px"
-            }, 200, function() {
-                header.css("position", "relative");
-                header.css("top", "0px");
-            });
+       height: "350px"
+       }, 200, function() {
+       header.css("position","relative");
+       header.css("top","0px");
+       });
 
-            content.animate({
+       content.animate({
 
-                // margin-top : "350px"
-            }, 100, function() {
-                content.css("margin-top", "0px");
-                content.css("height", "500px");
-                content.css("overflow-y", "visible");
-                content.scrollTop(0);
-            });
+       // margin-top : "350px"
+       }, 100, function() {
+       content.css("margin-top","0px");
+       content.css("height","500px");
+       content.css("overflow-y","visible");
+       content.scrollTop(0);
+       });*/
+    }
+    //Updates scroll position
+    lastScroll = st;
+  });
 
-            emotion.animate({
+  /*$().on("swipe",function(){
+   alert("111");
+   });*/
 
-                height: "100px",
-                width: "100px"
-            }, 100, function() {
-                showEmtion.css("visibility", "visible");
-                seletor.css("visibility", "visible");
-                headerContent.css("margin", "60px 30px");
-                indexTitle.css("font-size", "30px");
-                emotion.css("margin","0px 0px");
-                emotion.css("background-size","110px 110px");
+  $(window).swipe( {
+    swipeUp:function(event, direction, distance, duration) {
+      console.log("You swiped " + direction)
+    },
+    swipeDown:function(event, direction, distance, duration) {
+      console.log("You swiped " + direction)
 
-                showEmtion.css("margin-top","30px");
-            });
+      header.animate({
 
-            tempValue = 1;
-        } else if (st < 20) {
+        height: "185px"
+      }, 10, function() {
+        header.css("position", "relative");
+        header.css("top", "0px");
+      });
 
+      content.animate({
 
-            header.animate({
+        // margin-top : "350px"
+      }, 10, function() {
+        content.css("margin-top", "0px");
+        content.css("height", "500px");
+        content.css("overflow-y", "visible");
+        content.scrollTop(0);
+      });
 
-                height: "50px"
-            }, 200, function() {
-                header.css("position", "fixed");
-                header.css("top", "0px");
-            });
+      emotion.animate({
 
-            content.animate({
+        height: "100px",
+        width: "100px"
+      }, 10, function() {
+        showEmtion.css("visibility", "visible");
+        seletor.css("visibility", "visible");
+        headerContent.css("margin", "60px 30px");
+        indexTitle.css("font-size", "30px");
+        emotion.css("margin","0px 0px");
+        emotion.css("background-size","110px 110px");
 
-
-            }, 100, function() {
-                content.css("margin-top", "50px");
-                content.css("height", "500px");
-                content.css("overflow-y", "auto");
-                content.scrollTop(1);
-            });
-
-            emotion.animate({
-
-                height: "30px",
-                width: "30px"
-            }, 100, function() {
-                showEmtion.css("visibility", "hidden");
-                seletor.css("visibility", "hidden");
-                headerContent.css("margin", "4px 2px");
-                indexTitle.css("font-size", "20px");
-                indexTitle.css("height", "24px");
-                indexTitle.css("letter-spacing", "-0.7px");
-                indexTitle.css("font-size", "20px");
-                emotion.css("margin","8px 0px");
-                emotion.css("background-size","40px 40px");
-            });
-
-            tempValue = 0
-        }
+        showEmtion.css("margin-top","30px");
+      });
+    },
+    click:function(event, target) {
+    },
+    threshold:100,
+    allowPageScroll:"vertical"
+  });
 
 
 
-    });
+
+  content.scroll(function(event) {
+    var st = $(this).scrollTop();
+
+    if (st == 0) {
+
+
+      header.animate({
+
+        height: "185px"
+      }, 10, function() {
+        header.css("position", "relative");
+        header.css("top", "0px");
+      });
+
+      content.animate({
+
+        // margin-top : "350px"
+      }, 10, function() {
+        content.css("margin-top", "0px");
+        content.css("height", "500px");
+        content.css("overflow-y", "visible");
+        content.scrollTop(0);
+      });
+
+      emotion.animate({
+
+        height: "100px",
+        width: "100px"
+      }, 10, function() {
+        showEmtion.css("visibility", "visible");
+        seletor.css("visibility", "visible");
+        headerContent.css("margin", "60px 30px");
+        indexTitle.css("font-size", "30px");
+        emotion.css("margin","0px 0px");
+        emotion.css("background-size","110px 110px");
+
+        showEmtion.css("margin-top","30px");
+      });
+
+      tempValue = 1;
+    } else if (st < 20) {
+
+
+      header.animate({
+
+        height: "50px"
+      }, 10, function() {
+        header.css("position", "fixed");
+        header.css("top", "0px");
+      });
+
+      content.animate({
+
+
+      }, 10, function() {
+        content.css("margin-top", "50px");
+        content.css("height", "500px");
+        content.css("overflow-y", "auto");
+        content.scrollTop(1);
+      });
+
+      emotion.animate({
+
+        height: "30px",
+        width: "30px"
+      }, 10, function() {
+        showEmtion.css("visibility", "hidden");
+        seletor.css("visibility", "hidden");
+        headerContent.css("margin", "4px 2px");
+        indexTitle.css("font-size", "20px");
+        indexTitle.css("height", "24px");
+        indexTitle.css("letter-spacing", "-0.7px");
+        indexTitle.css("font-size", "20px");
+        emotion.css("margin","8px 0px");
+        emotion.css("background-size","40px 40px");
+      });
+
+      tempValue = 0
+    }
+
+
+
+  });
 
     showBtn.click(function(){
       if(showCount == 0){
