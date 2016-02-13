@@ -15,12 +15,28 @@ var UserSchema = new Schema({
   emotionStatus: { type: Number, default: 3 }, // 이모션 상태(1:bad ~ 5:good)
   createDate: { type: Date, default: Date.now() }, // 생성 시간
   updateDate: { type: Date, default: Date.now() } // 수정 시간
-}, { collection: 'users' });
+}, {
+  id: false,
+  toObject: {
+    virtuals: true
+  }
+  ,toJSON: {
+    virtuals: true
+  },
+  collection: 'users'
+});
 
 UserSchema.index({ nickname: 1 }, { unique: true });
+
+UserSchema.virtual('posts')
+  .set(function(posts) {
+    this._posts = posts;
+  })
+  .get(function() { return this._posts; });
 
 /**
  * Model Methods
  */
+
 
 module.exports = mongoose.model('User', UserSchema);

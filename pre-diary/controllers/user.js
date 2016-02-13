@@ -1,6 +1,5 @@
 'use strict';
 
-var Q = require('q');
 var UserModel = require('../models/user');
 var Session = require('../util/session');
 
@@ -12,20 +11,22 @@ function UserController() {
 }
 
 UserController.prototype.readUser = function(req, res) {
+  var userPromise =  UserModel.findOne({_id: req.params.id});
+  var postPromise = null;
   var result = null;
-  Q.fcall(UserModel.findOne({_id: req.params.id})
-    .then(function(user) {
-      result = user;
-      return UserModel.model('Post').find({author: user._id});
-    })
-    .then(function(posts) {
-      result.posts = posts || [];
-      res.status(200).send(user || {});
-    })
-    .catch(function(err) {
-      res.status(400).send(err);
-    })
-    .done();
+  userPromise.then(function(user) {
+    if (!user) {
+      throw 'not exist user';
+    }
+    result = user;
+    postPromise = UserModel.model('Post').find({author: user._id});
+    return postPromise;
+  }).then(function(posts) {
+    result.posts = posts || [];
+    res.status(200).send(result);
+  }).catch(function(err) {
+    return res.status(400).send(err);
+  });
 };
 
 UserController.prototype.login = function(req, res) {
