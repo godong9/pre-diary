@@ -26,7 +26,7 @@ UserController.prototype.login = function(req, res) {
     '&client_secret=' + CLIENT_SECRET +
     '&code=' + req.query.code + '&state=' + req.query.state,
     function (error, response, body) {
-      var result, options;
+      var result, options, newUser;
       if (!error && response.statusCode == 200) {
         try {
           result = JSON.parse(body);
@@ -47,7 +47,17 @@ UserController.prototype.login = function(req, res) {
           }
 
           //TODO: 유저 회원 가입 추가
-          res.send(result.response);
+          newUser = {
+            nickname: result.nickname,
+            email: result.email,
+            birthday: result.birthday,
+            accessToken: result.accessToken,
+            refreshToken: result.refreshToken
+          };
+
+          UserModel.create(newUser, function(err, user) {
+            res.send(user);
+          });
         });
       }
     });
