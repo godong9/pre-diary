@@ -76,6 +76,9 @@ $(function() {
           $(".list-group-item").unbind('click').bind('click', function(){
             var value = $(this).data('value');
             var url = "/post/"+value;
+            if (!value) {
+              return;
+            }
             $(location).attr('href',url);
           });
         }
