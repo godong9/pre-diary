@@ -39,7 +39,7 @@ $(document).ready(function(){
 			
 			$('.smile').click(function() {
 						
-					var score = $(this).find('img').val();
+					var score = $(this).find('img').data('value');
 					var url = 'http://godong9.com:3001/posts/' + $('#user_main').data('post');
 
 					var put = {
