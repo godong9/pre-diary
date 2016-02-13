@@ -51,13 +51,14 @@ router.get('/login/callback', function(req, res, next) {
                       'Authorization': 'Bearer ' + result.access_token
                   }
               };
-
               request(options, function (error, response, body) {
                   try {
                       result = JSON.parse(body);
                   } catch(e) {
                       return res.send(e);
                   }
+
+                  //TODO: 유저 회원 가입 추가
                   res.send(result.response);
               });
           }

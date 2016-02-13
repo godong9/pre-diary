@@ -4,12 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
 
 var app = express();
+
+var MongoStore = null;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -59,5 +62,21 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// Session
+if (app.get('env') === 'production') {
+  MongoStore = require('connect-mongo')(session);
+  app.use(session({
+    secret: 'prediary',
+    store: new MongoStore({ url: 'mongodb://localhost/prediary' }),
+    resave: false,
+    saveUninitialized: true
+  }));
+} else {
+  app.use(session({
+    secret: 'prediary',
+    resave: false,
+    saveUninitialized: true
+  }));
+}
 
 module.exports = app;
