@@ -1,5 +1,8 @@
 'use strict';
 
+var log4js = require('log4js');
+var logger = log4js.getLogger('controllers/user');
+
 var UserModel = require('../models/user');
 var Session = require('../util/session');
 
@@ -27,6 +30,7 @@ UserController.prototype.readUser = function(req, res) {
     result.posts = posts || [];
     res.status(200).send(result);
   }).catch(function(err) {
+    logger.error(err);
     return res.status(400).send(err);
   });
 };
@@ -46,6 +50,7 @@ UserController.prototype.login = function(req, res) {
         try {
           tokenResult = JSON.parse(body);
         } catch (e) {
+          logger.error(e);
           return res.status(400).send(e);
         }
 
@@ -60,6 +65,7 @@ UserController.prototype.login = function(req, res) {
           try {
             result = JSON.parse(body);
           } catch (e) {
+            logger.error(e);
             return res.status(400).send(e);
           }
 
@@ -78,8 +84,8 @@ UserController.prototype.login = function(req, res) {
             }
             UserModel.create(newUser, function(err, user) {
               if (err) {
-                res.status(400).send(err);
-                return;
+                logger.error(err);
+                return res.status(400).send(err);
               }
               Session.registerSession(req, user);
               res.redirect('/user/'+req.session.userId);

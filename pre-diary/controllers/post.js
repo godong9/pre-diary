@@ -1,5 +1,8 @@
 'use strict';
 
+var log4js = require('log4js');
+var logger = log4js.getLogger('controllers/post');
+
 var PostModel = require('../models/post');
 var Session = require('../util/session');
 
@@ -15,6 +18,7 @@ PostController.prototype.readPost = function(req, res) {
     //}
     res.status(200).send(post);
   }).catch(function(err) {
+    logger.error(err);
     return res.status(400).send(err);
   });
 };
@@ -27,6 +31,7 @@ PostController.prototype.createPost = function(req, res) {
   postPromise.then(function(post) {
     res.status(200).send(post);
   }).catch(function(err) {
+    logger.error(err);
     return res.status(400).send(err);
   });
 };
