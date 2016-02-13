@@ -32,12 +32,13 @@ PostController.prototype.readPosts = function(req, res) {
   //  return res.status(401).send('permission denied');
   //}
   //query.author = req.session.userId;
+  query.author = '56bf10b48ef8be4e4c3c858f';
   if (req.query.emotionStatus) {
     query.emotionStatus = req.query.emotionStatus;
   }
   postPromise = PostModel.find(query, {}, {sort:{openDate:-1}});
   postCountPromise = PostModel.aggregate([
-    {$match: query},
+    {$match: {author: query.author}},
     {$group:{_id:"$emotionStatus",total:{$sum:1}}},
     {$sort:{_id:1}}
   ]).exec();
