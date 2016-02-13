@@ -2,7 +2,7 @@
 
 var Q = require('q');
 var UserModel = require('../models/user');
-var Session = require('..util/session');
+var Session = require('../util/session');
 var CLIENT_ID = 'ramRPsEprwFt2FOzrHzg';
 var CLIENT_SECRET = '5KYRbJV1Tw';
 
