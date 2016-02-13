@@ -24,10 +24,30 @@ PostController.prototype.readPost = function(req, res) {
 };
 
 PostController.prototype.createPost = function(req, res) {
-  var postPromise = PostModel.create(req.body);
+  var postPromise;
+  if (!Session.hasSession(req)) {
+    return res.status(401).send('permission denied');
+  }
+  req.body.author = req.session.userId;
+  postPromise = PostModel.create(req.body);
   //if (!Session.isAllow(req, req.body.author)) {
   //  return res.status(401).send('permission denied');
   //}
+  postPromise.then(function(post) {
+    res.status(200).send(post);
+  }).catch(function(err) {
+    logger.error(err);
+    return res.status(400).send(err);
+  });
+};
+
+PostController.prototype.updatePost = function(req, res) {
+  var postPromise;
+  if (!Session.hasSession(req)) {
+    return res.status(401).send('permission denied');
+  }
+  postPromise = PostModel.update({_id: req.params.id},{$set:{emotionStatus: req.body.emotionStatus}});
+  //TODO: 유저 권한 체크 필요!
   postPromise.then(function(post) {
     res.status(200).send(post);
   }).catch(function(err) {
