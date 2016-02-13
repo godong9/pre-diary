@@ -2,6 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
+var PostCtrl = require('../controllers/post');
 
 /**
  * @api {get} /posts Get Post List
@@ -59,9 +60,7 @@ router.get('/:id', function (req, res, next) {
  *       "id": "123456abcdef"
  *     }
  */
-router.post('/', function (req, res, next) {
-
-});
+router.post('/', PostCtrl.createPost);
 
 
 module.exports = router;
