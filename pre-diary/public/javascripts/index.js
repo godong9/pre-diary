@@ -281,7 +281,8 @@ $(function() {
 
           listItem.unbind('click').click(function(){
             var value = $(this).value();
-            console.log(value);
+            var url = "/post/"+value;
+            $(location).attr('href',url);
           });
         }
       });
