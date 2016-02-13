@@ -58,7 +58,7 @@ UserController.prototype.login = function(req, res) {
           };
 
           UserModel.create(newUser, function(err, user) {
-            res.send(user);
+            res.send("SUCCESS");
           });
         });
       }
