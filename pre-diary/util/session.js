@@ -9,8 +9,10 @@ Session.prototype.hasSession = function (req) {
 };
 
 Session.prototype.registerSession = function (req, user) {
-  req.session._id = user._id;
-  req.session.nickname = user.nickname;
+  req.session = {
+    _id: user._id,
+    nickname: user.nickname
+  };
 };
 
 Session.prototype.removeSession = function (req) {
