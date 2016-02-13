@@ -12,7 +12,9 @@ function UserController() {
 
 UserController.prototype.readUser = function(req, res) {
   UserModel.find({}, function(err, docs) {
-    if (err) return res.status(400).send(err);
+    if (err) {
+      return res.status(400).send(err);
+    }
     res.status(200).send(docs);
   });
 };
@@ -33,7 +35,7 @@ UserController.prototype.login = function(req, res) {
         try {
           tokenResult = JSON.parse(body);
         } catch (e) {
-          return res.send(e);
+          return res.status(400).send(e);
         }
 
         options = {
@@ -46,7 +48,7 @@ UserController.prototype.login = function(req, res) {
           try {
             result = JSON.parse(body);
           } catch (e) {
-            return res.send(e);
+            return res.status(400).send(e);
           }
 
           newUser = {
@@ -59,10 +61,10 @@ UserController.prototype.login = function(req, res) {
 
           UserModel.create(newUser, function(err, user) {
             if (err) {
-              res.send('err:', err);
+              res.status(400).send(err);
               return;
             }
-            res.send(user);
+            res.status(200).send(user);
           });
         });
       }

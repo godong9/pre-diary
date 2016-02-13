@@ -7,7 +7,6 @@ var mongoose = require('mongoose'),
  * User Schema
  */
 var UserSchema = new Schema({
-  _id: { type: String },
   nickname: { type: String, required: true }, // 닉네임
   email: { type: String, required: true }, // 이메일
   birthday: { type: String, required: true }, // 생일
