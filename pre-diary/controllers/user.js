@@ -36,12 +36,20 @@ UserController.prototype.readUser = function(req, res) {
 };
 
 UserController.prototype.login = function(req, res) {
+  res.redirect('https://nid.naver.com/oauth2.0/authorize?response_type=code&' +
+    '&client_id=' + CLIENT_ID +
+    '&redirect_uri=http%3A%2F%2Fgodong9.com%3A3001%2Fusers%2Flogin%2Fcallback' +
+    '&state=' + CLIENT_SECRET
+  )
+};
+
+UserController.prototype.loginCallback = function(req, res) {
   if (Session.hasSession(req)) {
     return res.redirect('/user/'+req.session.userId);
   }
   var request = require('request');
-  request('https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&' +
-    'client_id=' + CLIENT_ID +
+  request('https://nid.naver.com/oauth2.0/token?grant_type=authorization_code' +
+    '&client_id=' + CLIENT_ID +
     '&client_secret=' + CLIENT_SECRET +
     '&code=' + req.query.code + '&state=' + req.query.state,
     function (error, response, body) {
