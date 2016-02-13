@@ -237,7 +237,7 @@ $(function() {
      listItem.click(function(){
         var value = $(this).value();
         console.log(value);
-     })
+     });
     /*filter.click(function(){
 
     })*/
