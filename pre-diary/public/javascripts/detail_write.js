@@ -89,9 +89,7 @@ $(document).ready(function(){
 			}
 		});*/
 
-				var select_date = $('#sel1 option:selected').val();
-				var days = moment(new Date()).add(select_date, "days");
-				console.log(days._d);
+
 
 		$('#data_submit').click(function() {
 				var url = "http://godong9.com:3001/posts";
@@ -99,7 +97,10 @@ $(document).ready(function(){
 				if(!$('#subject').val() || !$('#content').val()) {
 					return alert("제목 또는 내용을 입력해주세요!");
 				}
-
+				var select_date = $('#sel1 option:selected').val();
+				var days = moment(new Date()).add(select_date, "days");
+				console.log(days._d);
+			
 				var post = {
 						"subject": $('#subject').val(),
 						"content": $('#content').val(),
