@@ -53,7 +53,15 @@ router.get('/post/:id', function(req, res, next) {
 
 /* GET Write Post Page. */
 router.get('/user/post/write/', function(req, res, next) {
-  res.render('writePost');
+  if (!Session.hasSession(req)) {
+    return res.status(404).send('permission denied');
+  }
+  var viewData = {
+    userId: req.session.userId,
+    userNickname: req.session.userNickname
+  };
+
+  res.render('writePost', viewData);
 });
 
 
