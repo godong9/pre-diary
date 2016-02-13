@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pre-Diary</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+
+</head>
+
+<body id="user_main" data-user="<%= userId %>">
+
+<section id='write'>
+    <header class='nav row'>
+        <div class='col-xs-12'>
+            <div class='left-wrapper'>
+                <a href='/view/index'>
+                    <img src='../../assets/Back.png' />
+                </a>
+            </div>
+            <div class='right-wrapper'>
+                <a href='/view/index'>
+                    <img id='submit' src='../../assets/Checkmark-50.png' />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <article class='write-content'>
+        <div class='date-wrapper'>
+            <div class='date-text'>
+                날짜
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="sel1">
+                    <option value='3'>3일 후에 보기</option>
+                    <option value='7'>1주 후에 보기</option>
+                    <option value='21'>3주 후에 보기</option>
+                    <option value='30'>1달 후에 보기</option>
+                    <option value='90'>3달 후에 보기</option>
+                    <option value='365'>1년 후에 보기</option>
+                    <option value='null'>날짜 지정하기</option>
+                </select>
+            </div>
+        </div>
+
+        <form id="eventForm" method="post" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-xs-5 date">
+                    <div class="input-group input-append date">
+                        <input type="text" class="form-control" name="date" id="datePicker" />
+                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class='text-input'>
+            <input type='text' id='subject' name='subject' value='' />
+            <textarea class="form-control" id='content' rows="9"></textarea>
+        </div>
+    </article>
+    <style type="text/css">
+        /**
+         * Override feedback icon position
+          * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+             */
+        #eventForm .form-control-feedback {
+            top: 0;
+            right: -15px;
+        }
+    </style>
+</section>
+
+<script src="/javascripts/moment.js"></script>
+<script src="/javascripts/detail_write.js"></script>
+<script src="/javascripts/index.js"></script>
+</body>
+
+</html>
