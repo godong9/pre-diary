@@ -9,9 +9,9 @@ function PostController() {
 
 PostController.prototype.createPost = function(req, res) {
   var postPromise = PostModel.create(req.body);
-  if (!Session.isAllow(req, req.body.author)) {
-    return res.status(401).send('permission denied');
-  }
+  //if (!Session.isAllow(req, req.body.author)) {
+  //  return res.status(401).send('permission denied');
+  //}
   postPromise.then(function(post) {
     res.status(200).send(post);
   }).catch(function(err) {
