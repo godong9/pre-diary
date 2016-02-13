@@ -3,6 +3,9 @@ var router = express.Router();
 var mysql = require('../util/sql').mysql;
 var pool = require('../util/sql').pool;
 
+var CLIENT_ID = 'ramRPsEprwFt2FOzrHzg';
+var CLIENT_SECRET = '5KYRbJV1Tw';
+
 /**
  * @api {get} /users/:id Get User Info
  * @apiName GetUser
@@ -27,7 +30,10 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.get('/login/callback', function(req, res, next) {
-  res.send(req.query);
+  res.redirect(
+      'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&'+
+        'client_id='+CLIENT_ID+'&client_secret='+CLIENT_SECRET+'&code='+req.query.code+'&state='+req.query.state
+  );
 });
 
 /**
