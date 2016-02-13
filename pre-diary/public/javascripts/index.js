@@ -271,7 +271,7 @@ $(function() {
           var resultTime = (result/24)+1;
           if(result < 0){
             var tempPic = data.posts[i].emotionStatus;
-            tempList = "<li value=\""+data.posts[i]._id+"\"class=\"list-group-item\"><div class=\"row\"><div class=\"col-xs-10 text-group\"><div class=\"list-font-item1\">"+ data.posts[i].subject+"</div><div class=\"list-font-item2\">"+ openDate.format("YY/MM/DD")+"</div></div><div class=\"emotion-icon col-xs-2\" style=\"background:url(./img/pre_face_0"+tempPic+".png) no-repeat center center;background-size: 48px 48px;\"></div></div></li>";
+            tempList = "<li data-value=\""+data.posts[i]._id+"\"class=\"list-group-item\"><div class=\"row\"><div class=\"col-xs-10 text-group\"><div class=\"list-font-item1\">"+ data.posts[i].subject+"</div><div class=\"list-font-item2\">"+ openDate.format("YY/MM/DD")+"</div></div><div class=\"emotion-icon col-xs-2\" style=\"background:url(./img/pre_face_0"+tempPic+".png) no-repeat center center;background-size: 48px 48px;\"></div></div></li>";
 
           }
           else{
@@ -280,7 +280,7 @@ $(function() {
           $(".list-group").append(tempList);
 
           $(".list-group-item").unbind('click').bind('click', function(){
-            var value = $(this).value();
+            var value = $(this).data('value');
             var url = "/post/"+value;
             $(location).attr('href',url);
           });
