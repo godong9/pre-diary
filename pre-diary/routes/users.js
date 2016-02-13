@@ -30,10 +30,17 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.get('/login/callback', function(req, res, next) {
-  res.redirect(
-      'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&'+
-        'client_id='+CLIENT_ID+'&client_secret='+CLIENT_SECRET+'&code='+req.query.code+'&state='+req.query.state
-  );
+  var request = require('request');
+  request('https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&'+
+      'client_id='+CLIENT_ID+
+      '&client_secret='+CLIENT_SECRET+
+      '&code='+req.query.code+'&state='+req.query.state,
+      function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log(body);
+        }
+      });
+
 });
 
 /**
