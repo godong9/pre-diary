@@ -7,6 +7,8 @@ $(function() {
     var currentDate = new Date();
     var currentMonth = currentDate.getMonth();
 
+    var month = $("#month");
+    month.text(currentMonth);
 
     ajaxCall();
 
