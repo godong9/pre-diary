@@ -59,7 +59,7 @@ UserController.prototype.login = function(req, res) {
 
           UserModel.create(newUser, function(err, user) {
             if (err) {
-              res.send(err);
+              res.send('err:', err);
               return;
             }
             res.send(user);
