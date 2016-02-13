@@ -278,6 +278,11 @@ $(function() {
             tempList = "<li class=\"list-group-item\"><div style = \"text-align: center;\"><span id=\"lock-icon\"></span><span id=\"lock-date\">"+ Math.floor(hours) + " 일 후</span></div></li>";
           }
           $(".list-group").append(tempList);
+
+          listItem.unbind('click').click(function(){
+            var value = $(this).value();
+            console.log(value);
+          });
         }
       });
     }
