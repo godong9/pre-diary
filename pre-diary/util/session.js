@@ -5,18 +5,11 @@ function Session() {
 }
 
 Session.prototype.hasSession = function (req) {
-  return (typeof req.session !== "undefined" && typeof req.session.id !== "undefined");
-};
-
-Session.prototype.getSession = function (req) {
-  return {
-    id: req.session.id,
-    nickname: req.session.nickname
-  };
+  return (typeof req.session !== "undefined" && typeof req.session._id !== "undefined");
 };
 
 Session.prototype.registerSession = function (req, user) {
-  req.session.id = user.id;
+  req.session._id = user._id;
   req.session.nickname = user.nickname;
 };
 

@@ -2,7 +2,7 @@
 
 var Q = require('q');
 var UserModel = require('../models/user');
-
+var Session = require('..util/session');
 var CLIENT_ID = 'ramRPsEprwFt2FOzrHzg';
 var CLIENT_SECRET = '5KYRbJV1Tw';
 
@@ -11,11 +11,11 @@ function UserController() {
 }
 
 UserController.prototype.readUser = function(req, res) {
-  UserModel.find({}, function(err, docs) {
+  UserModel.findOne({_id: req.params.id}, function(err, user) {
     if (err) {
       return res.status(400).send(err);
     }
-    res.status(200).send(docs);
+    res.status(200).send(user);
   });
 };
 
@@ -24,6 +24,9 @@ UserController.prototype.createUser = function(req, res) {
 };
 
 UserController.prototype.login = function(req, res) {
+  if (Session.hasSession(req)) {
+    return res.redirect('/user/'+req.session._id);
+  }
   var request = require('request');
   request('https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&' +
     'client_id=' + CLIENT_ID +
@@ -64,6 +67,7 @@ UserController.prototype.login = function(req, res) {
               res.status(400).send(err);
               return;
             }
+            Session.registerSession(req, user);
             res.status(200).send(user);
           });
         });
