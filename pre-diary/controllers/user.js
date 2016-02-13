@@ -77,6 +77,7 @@ UserController.prototype.login = function(req, res) {
             refreshToken: tokenResult.refresh_token
           };
 
+          logger.debug("newUser:", newUser);
           UserModel.findOne({nickname: newUser.nickname}, function(err, user) {
             if (user) {
               Session.registerSession(req, user);
