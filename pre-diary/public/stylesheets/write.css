@@ -1,0 +1,52 @@
+section#write {
+  height: 100%;
+  background: transparent; }
+  section#write article.detail-content {
+    height: 600px; }
+    section#write article.detail-content .date-wrapper {
+      text-align: center; }
+      section#write article.detail-content .date-wrapper .date-text {
+        display: inline-block; }
+      section#write article.detail-content .date-wrapper .form-group {
+        display: inline-block; }
+  section#write header.nav {
+    margin: 0px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.3); }
+    section#write header.nav .left-wrapper {
+      float: left; }
+      section#write header.nav .left-wrapper img {
+        vertical-align: middle;
+        width: 24px;
+        margin: 13px; }
+    section#write header.nav .right-wrapper {
+      float: right; }
+      section#write header.nav .right-wrapper > img {
+        width: 24px;
+        cursor: pointer;
+        margin: 13px; }
+      section#write header.nav .right-wrapper .modal-body {
+        text-align: center; }
+      section#write header.nav .right-wrapper .modal-body > img {
+        text-align: center;
+        width: 230px;
+        cursor: pointer; }
+  section#write article.write-content {
+    padding: 10px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.3); }
+    section#write article.write-content .date-text {
+      display: inline-block;
+      margin: 5px;
+      color: white; }
+    section#write article.write-content .form-group {
+      display: inline-block; }
+      section#write article.write-content .form-group .form-control {
+        width: 150px;
+        text-align: right;
+        background-color: rgba(255, 255, 255, 0.6); }
+    section#write article.write-content .text-input textarea {
+      background: transparent;
+      border: none; }
+
+/*# sourceMappingURL=write.css.map */
