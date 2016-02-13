@@ -40,7 +40,7 @@ $(document).ready(function(){
 			$('.smile').click(function() {
 						
 					var score = $(this).find('img').val();
-					var url = 'http://godong9.com:3001/posts/56bf1c7f8f2f3ab94ec59e51';
+					var url = 'http://godong9.com:3001/posts/' + $('#user_main').data('post');;
 
 					var put = {
 							"emotionStatus" : score

@@ -45,7 +45,8 @@ router.get('/post/:id', function(req, res, next) {
   }
   var viewData = {
     userId: req.session.userId,
-    userNickname: req.session.userNickname
+    userNickname: req.session.userNickname,
+    postId: req.params.id
   };
 
   res.render('post', viewData);
