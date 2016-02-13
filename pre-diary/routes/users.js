@@ -3,6 +3,8 @@ var router = express.Router();
 var mysql = require('../util/sql').mysql;
 var pool = require('../util/sql').pool;
 
+var Q = require('q');
+
 var CLIENT_ID = 'ramRPsEprwFt2FOzrHzg';
 var CLIENT_SECRET = '5KYRbJV1Tw';
 
@@ -36,11 +38,30 @@ router.get('/login/callback', function(req, res, next) {
       '&client_secret='+CLIENT_SECRET+
       '&code='+req.query.code+'&state='+req.query.state,
       function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log(body);
-        }
-      });
+          var result, options;
+          if (!error && response.statusCode == 200) {
+              try {
+                  result = JSON.parse(body);
+              } catch(e) {
+                  return res.send(e);
+              }
+              options = {
+                  url: 'https://openapi.naver.com/v1/nid/me',
+                  headers: {
+                      'Authorization': 'Bearer ' + result.access_token
+                  }
+              };
 
+              request(options, function (error, response, body) {
+                  try {
+                      result = JSON.parse(body);
+                  } catch(e) {
+                      return res.send(e);
+                  }
+                  res.send(result.response);
+              });
+          }
+      });
 });
 
 /**
