@@ -62,6 +62,16 @@ if (app.get('env') === 'production') {
   }));
 }
 
+// Middleware
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+  res.setHeader("Access-Control-Max-Age", "3600");
+  res.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  next();
+});
+
 // Route files
 app.use('/', routes);
 app.use('/users', users);
@@ -96,16 +106,6 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
-});
-
-// Middleware
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-  res.setHeader("Access-Control-Max-Age", "3600");
-  res.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
-  next();
 });
 
 module.exports = app;
