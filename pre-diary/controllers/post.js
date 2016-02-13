@@ -47,11 +47,11 @@ PostController.prototype.readPosts = function(req, res) {
     return postCountPromise;
   }).then(function(postCount) {
     var emotionCount = {
-      "1": "0",
-      "2": "0",
-      "3": "0",
-      "4": "0",
-      "5": "0"
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
     };
     var i, len;
     for (i=0, len=postCount.length; i<len; i++) {
