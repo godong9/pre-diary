@@ -49,7 +49,7 @@ $(document).ready(function(){
 					};
 
 
-					$.post(url,put,function(data) {
+					$.put(url,put,function(data) {
 				
 					});
 
@@ -98,9 +98,13 @@ $(document).ready(function(){
 					return alert("제목 또는 내용을 입력해주세요!");
 				}
 				var select_date = $('#sel1 option:selected').val();
-				var days = moment(new Date()).add(select_date, "days");
-				console.log(days._d);
-			
+			 	var days;
+				if (select_date === '1') {
+					days = moment(new Date()).add(select_date, "minutes");
+				} else {
+					days = moment(new Date()).add(select_date, "days");
+				}
+
 				var post = {
 						"subject": $('#subject').val(),
 						"content": $('#content').val(),
