@@ -5,12 +5,12 @@ function Session() {
 }
 
 Session.prototype.hasSession = function (req) {
-  return (typeof req.session !== "undefined" && typeof req.session._id !== "undefined");
+  return (typeof req.session !== "undefined" && typeof req.session.userId !== "undefined");
 };
 
 Session.prototype.registerSession = function (req, user) {
-  req.session._id = user._id;
-  req.session.nickname = user.nickname;
+  req.session.userId = user._id;
+  req.session.userNickname = user.nickname;
 };
 
 Session.prototype.removeSession = function (req) {
