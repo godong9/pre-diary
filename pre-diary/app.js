@@ -83,7 +83,7 @@ app.use(function(err, req, res, next) {
 
 // Session
 if (app.get('env') === 'production') {
-  MongoStore = require('connect-mongo')(session);
+  MongoStore = require('connect-mongo/es5')(session);
   app.use(session({
     secret: 'prediary',
     store: new MongoStore({ url: DB_URI }),
