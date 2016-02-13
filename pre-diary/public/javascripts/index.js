@@ -12,8 +12,8 @@ $(function() {
     var filter = $("#filter");
     var month = $("#month");
 
-    var showBtn = $("#show");
-    var notShowBtn = $("#notshow");
+    //var showBtn = $("#show");
+    //var notShowBtn = $("#notshow");
 
     var listItem = $(".list-group-item");
 
@@ -245,36 +245,36 @@ $(function() {
 
   });
 
-    showBtn.click(function(){
-      if(showCount == 0){
-
-        showBtn.css("background-color","#1e7cd3")
-        showBtn.css("color","#ffffff")
-        showCount=1;
-      }else{
-
-        showBtn.css("background-color","#ffffff")
-        showBtn.css("color","#1e7cd3")
-        showCount=0;
-
-      }
-    });
-
-    notShowBtn.click(function(){
-      if(notShowCount == 0){
-
-        notShowBtn.css("background-color","#1e7cd3")
-        notShowBtn.css("color","#ffffff")
-
-        notShowCount = 1;
-      }else{
-
-        notShowBtn.css("background-color","#ffffff")
-        notShowBtn.css("color","#1e7cd3")
-
-        notShowCount = 0;
-      }
-    });
+    //showBtn.click(function(){
+    //  if(showCount == 0){
+    //
+    //    showBtn.css("background-color","#1e7cd3")
+    //    showBtn.css("color","#ffffff")
+    //    showCount=1;
+    //  }else{
+    //
+    //    showBtn.css("background-color","#ffffff")
+    //    showBtn.css("color","#1e7cd3")
+    //    showCount=0;
+    //
+    //  }
+    //});
+    //
+    //notShowBtn.click(function(){
+    //  if(notShowCount == 0){
+    //
+    //    notShowBtn.css("background-color","#1e7cd3")
+    //    notShowBtn.css("color","#ffffff")
+    //
+    //    notShowCount = 1;
+    //  }else{
+    //
+    //    notShowBtn.css("background-color","#ffffff")
+    //    notShowBtn.css("color","#1e7cd3")
+    //
+    //    notShowCount = 0;
+    //  }
+    //});
 
      header.click(function(){
          var url = "/user/emotion/"+$('#user_main').data('user');
