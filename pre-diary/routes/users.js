@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var UserCtrl = require('../controllers/User');
+var UserCtrl = require('../controllers/user');
 
 /**
  * Login API
