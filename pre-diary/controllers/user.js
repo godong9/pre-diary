@@ -1,7 +1,9 @@
 'use strict';
 
+var Q = require('q');
 var UserModel = require('../models/user');
 var Session = require('../util/session');
+
 var CLIENT_ID = 'ramRPsEprwFt2FOzrHzg';
 var CLIENT_SECRET = '5KYRbJV1Tw';
 
@@ -10,14 +12,21 @@ function UserController() {
 }
 
 UserController.prototype.readUser = function(req, res) {
-  UserModel.findOne({_id: req.params.id}, function(err, user) {
-    if (err) {
-      return res.status(400).send(err);
-    }
-    res.status(200).send(user || {});
-  });
+  var result = null;
+  Q.fcall(UserModel.findOne({_id: req.params.id})
+    .then(function(user) {
+      result = user;
+      return UserModel.model('Post').find({author: user._id});
+    })
+    .then(function(posts) {
+      result.posts = posts || [];
+      res.status(200).send(user || {});
+    })
+    .catch(function(err) {
+      res.status(400).send(err);
+    })
+    .done();
 };
-
 
 UserController.prototype.login = function(req, res) {
   if (Session.hasSession(req)) {

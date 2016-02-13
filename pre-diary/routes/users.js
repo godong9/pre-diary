@@ -9,7 +9,6 @@ var UserCtrl = require('../controllers/user');
  */
 router.get('/login/callback', UserCtrl.login);
 
-
 /**
  * @api {get} /users/:id Get User Info
  * @apiName GetUser
