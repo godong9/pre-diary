@@ -1,6 +1,5 @@
 'use strict';
 
-var Q = require('q');
 var UserModel = require('../models/user');
 var Session = require('../util/session');
 var CLIENT_ID = 'ramRPsEprwFt2FOzrHzg';

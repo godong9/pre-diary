@@ -2,9 +2,13 @@
 
 var express = require('express');
 var router = express.Router();
+var Session = require('../util/session');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  if (Session.hasSession(req)) {
+    return res.redirect('/user/'+req.session.userId);
+  }
   res.render('index', { title: 'Express' });
 });
 
