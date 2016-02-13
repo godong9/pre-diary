@@ -5,10 +5,10 @@ var router = express.Router();
 var UserCtrl = require('../controllers/user');
 
 /**
- * @api {get} /login Naver Login
+ * @api {get} /users/login Naver Login
  * @apiName Login
  * @apiGroup User
- * @apiDescription 네이버 로그인하는 API (/login 으로 페이지 이동)
+ * @apiDescription 네이버 로그인하는 API (/users/login 으로 페이지 이동)
  */
 router.get('/login', UserCtrl.login);
 
