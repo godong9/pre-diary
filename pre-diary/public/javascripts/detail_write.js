@@ -94,13 +94,12 @@ $(document).ready(function(){
 				console.log(days._d);
 
 		$('#data_submit').click(function() {
-				console.log("CLICK");
 				var url = "http://godong9.com:3001/posts";
 
 				var post = {
 						"subject": $('#subject').val(),
 						"content": $('#content').val(),
-						"openDate": 1234
+						"openDate": days._d
 				};
 
 				$.post(url,post,function(data) {
