@@ -17,6 +17,10 @@ Session.prototype.removeSession = function (req) {
   req.session.destroy();
 };
 
+Session.prototype.isAllow = function (req, userId) {
+  return (this.hasSession(req) && req.session.userId === userId);
+};
+
 module.exports = new Session();
 
 

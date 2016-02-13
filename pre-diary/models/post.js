@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
  * Post Schema
  */
 var PostSchema = new Schema({
+  author: { type: String, required: true},
   createDate: { type: Date, default: Date.now() }, // 생성 시간
   updateDate: { type: Date, default: Date.now() } // 수정 시간
 }, { collection: 'posts' });
