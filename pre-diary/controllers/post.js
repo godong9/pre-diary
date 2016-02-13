@@ -26,10 +26,11 @@ PostController.prototype.readPost = function(req, res) {
 PostController.prototype.readPosts = function(req, res) {
   var query = {};
   var postPromise;
-  if (!Session.hasSession(req)) {
-    return res.status(401).send('permission denied');
-  }
-  query.author = req.session.userId;
+  //TODO: 주석 풀어야함!
+  //if (!Session.hasSession(req)) {
+  //  return res.status(401).send('permission denied');
+  //}
+  //query.author = req.session.userId;
   if (req.query.emotionStatus) {
     query.emotionStatus = req.query.emotionStatus;
   }
