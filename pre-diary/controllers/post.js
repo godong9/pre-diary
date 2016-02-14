@@ -68,6 +68,9 @@ PostController.prototype.readPosts = function(req, res) {
       (emotionCount["5"] * 5);
     var avg = Math.ceil(sum / 5.0);
 
+    if (avg === 0) {
+      avg = 1;
+    }
     PostModel.model('User').update({_id: req.session.userId}, {$set: {emotionStatus:avg}}, function(err, result) {
       res.status(200).send(result);
     });
