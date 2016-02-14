@@ -13,7 +13,7 @@ $(document).ready(function(){
 	//detail- page	
 		jQuery.ajax({
    	   type:"GET",
-			 url:"//godong9.com:3001/posts/"+$('user_main').data('post'),
+			 url:"//godong9.com:3001/posts/"+$('#user_main').data('post'),
 			 dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 			 success : function(data) {
 			 	console.log(data);
