@@ -71,7 +71,10 @@ PostController.prototype.readPosts = function(req, res) {
     if (!avg) {
       avg = 1;
     }
-    PostModel.model('User').update({_id: req.session.userId}, {$set: {emotionStatus:avg}}, function(err, result) {
+    PostModel.model('User').update({_id: req.session.userId}, {$set: {emotionStatus:avg}}, function(err) {
+      if (err) {
+        throw 'err';
+      }
       res.status(200).send(result);
     });
   }).catch(function(err) {
