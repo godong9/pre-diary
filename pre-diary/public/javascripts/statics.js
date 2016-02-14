@@ -97,6 +97,9 @@ $(function() {
 
 
         for(var i = 0 ; data.posts.length >= i ; i++){
+          if (!data.posts[i]) {
+            continue;
+          }
           var dt = new Date(data.posts[i].openDate);
 
           var openDate = moment(dt);
