@@ -5,7 +5,7 @@ $(function() {
     var emotionCount = $(".emotion-count");
 
     var currentDate = new Date();
-    var currentMonth = currentDate.getMonth();
+    var currentMonth = currentDate.getMonth() + 1;
 
     var month = $("#month");
     month.text(currentMonth);
